@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { signIn, useSession, getSession } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { FaTimes } from 'react-icons/fa';
 
