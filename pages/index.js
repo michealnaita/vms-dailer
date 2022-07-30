@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { ImPhoneHangUp } from 'react-icons/im';
+import { useSession, signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 const numbers = [
   { number: 1, letters: '' },
@@ -43,6 +45,8 @@ function NumPad({ setInput }) {
   );
 }
 export default function Home() {
+  const router = useRouter();
+  const { data: session, status } = useSession();
   const [isCall, setIsCall] = useState(false);
   const [input, setInput] = useState('');
   function updateInput(value) {
@@ -57,6 +61,10 @@ export default function Home() {
   }
   function endCall() {
     setIsCall(false);
+  }
+  if (!session) {
+    signIn();
+    return;
   }
   return (
     <div className='bg-center bg-[url("/bg.jpg")] bg-cover bg-no-repeat h-full'>
@@ -77,10 +85,11 @@ export default function Home() {
       ) : (
         <div className="h-full w-full flex flex-col items-center justify-between py-24  bg-black">
           <h1 className="text-2xl text-white font ">
-            Make call now to get started
+            Make <span className="text-cyan-500">call now </span>to get started
+            <pan className="text-cyan-500 text-3xl font-bold">.</pan>
           </h1>
           <button
-            className="text-xl text-white bg-green-500 highlight-none w-[70px] h-[70px] rounded-full flex items-center justify-center"
+            className="text-xl text-white  animate-pulse duration-100 bg-green-500 highlight-none w-[70px] h-[70px] rounded-full flex items-center justify-center"
             onClick={() => startCall()}
           >
             <FaPhoneAlt className="text-3xl pointer-events-none" />
