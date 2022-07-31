@@ -1,6 +1,5 @@
 import { Device } from '@twilio/voice-sdk';
 const useTwilio = (token) => {
-  console.log('called');
   const device = new Device(token, {
     codecPreferences: ['opus', 'pcmu'],
     fakeLocalDTMF: true,
@@ -18,7 +17,6 @@ const useTwilio = (token) => {
   device.on('connect', function (conn) {
     console.log('Successfully established call!');
   });
-
   return device;
 };
 export default useTwilio;
