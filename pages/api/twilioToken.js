@@ -1,10 +1,10 @@
-import { unstable_getServerSession } from 'next-auth/next';
+import { getToken } from 'next-auth/jwt';
 import twilio from 'twilio';
 
 const AccessToken = twilio.jwt.AccessToken;
 const VoiceGrant = AccessToken.VoiceGrant;
 export default async function twilioTokenHandler(req, res) {
-  const session = true;
+  const session = await getToken({ req });
   if (session) {
     const {
       TWILIO_ACCOUNT_SID,
@@ -26,7 +26,7 @@ export default async function twilioTokenHandler(req, res) {
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify({ token: accessToken.toJwt() }));
   } else {
-    res.setHead(403, 'get out of here man');
+    res.status(401).send('Get out of here man');
     res.end();
   }
 }

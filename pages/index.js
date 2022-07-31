@@ -84,7 +84,7 @@ export default function Home() {
       });
   }, []);
 
-  if (false) {
+  if (!session) {
     signIn();
     return;
   }

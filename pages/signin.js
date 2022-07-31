@@ -25,16 +25,13 @@ export default function SignIn() {
         }
       }
       if (res.url) {
-        router.push(res.url);
+        router.push('/');
       }
     } catch (err) {
       console.log(err);
     }
   }
-  if (session) {
-    router.push('/');
-    return <></>;
-  }
+
   return (
     <div className="bg-black h-full flex items-center justify-center">
       {error.status && (
