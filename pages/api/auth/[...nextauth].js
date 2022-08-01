@@ -8,6 +8,8 @@ export default NextAuth({
     CredentialsProvider({
       async authorize({ sim, pin }, req) {
         try {
+          if (isNaN(sim))
+            throw new Error('user sim is supposed to be a  number');
           const user = await db.user.findUnique({
             where: {
               sim: parseInt(sim),
@@ -18,13 +20,17 @@ export default NextAuth({
               id: true,
             },
           });
-          const result = bcrypt.compare(user.pinHash, pin);
-          if (result) {
+          if (!user) throw new Error('User not found');
+          const result = await bcrypt.compare(pin.toString(), user.pinHash);
+          console.log(user);
+          if (user && result) {
             delete user.pinHash;
-            return { user };
+            return user;
+          } else {
+            return null;
           }
-          return false;
         } catch (err) {
+          return null;
           console.log(err);
         }
       },
