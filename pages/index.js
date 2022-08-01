@@ -5,6 +5,7 @@ import twilio from '../frontend/utils/twilioDevice';
 import Image from 'next/image';
 import Alerts from '../frontend/components/Alerts';
 import Dailer from '../frontend/components/Dailer';
+import { useRouter } from 'next/router';
 
 function StartPage({ startCall }) {
   return (
@@ -36,6 +37,7 @@ export default function Home() {
     message: '',
     loader: true,
   });
+  const router = useRouter();
   const [device, setDevice] = useState(null);
   const [call, setCall] = useState(null);
   const { data: session, status } = useSession();
@@ -84,7 +86,7 @@ export default function Home() {
       });
   }, []);
 
-  if (!session) {
+  if (!session && typeof window !== 'undefined') {
     signIn();
     return;
   }

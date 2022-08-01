@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { FaTimes } from 'react-icons/fa';
-import { getToken } from 'next-auth/jwt';
 
 export default function SignIn() {
   const [loading, setLoading] = useState(false);
@@ -32,7 +31,7 @@ export default function SignIn() {
       console.log(err);
     }
   }
-  if (session) {
+  if (session && typeof window !== 'undefined') {
     router.push('/');
     return <></>;
   }
