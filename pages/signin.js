@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { FaTimes } from 'react-icons/fa';
+import { getToken } from 'next-auth/jwt';
 
 export default function SignIn() {
   const [loading, setLoading] = useState(false);
@@ -18,7 +19,6 @@ export default function SignIn() {
         redirect: false,
         ...payload,
       });
-      setLoading(false);
       if (res.error) {
         if (res.status === 401) {
           setError({ status: true, message: 'Invalid Credentials' });
@@ -27,11 +27,15 @@ export default function SignIn() {
       if (res.url) {
         router.push('/');
       }
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
   }
-
+  if (session) {
+    router.push('/');
+    return <></>;
+  }
   return (
     <div className="bg-black h-full flex items-center justify-center">
       {error.status && (
