@@ -1,7 +1,6 @@
 import { useState, useEffect, useImperativeHandle, forwardRef } from 'react';
 import { FaTimes, FaTimesCircle, FaCheck } from 'react-icons/fa';
-import { BiErrorCircle } from 'react-icons/bi';
-import { IoWarningOutline } from 'react-icons/io';
+import { IoWarningOutline } from 'react-icons/io5';
 import classNames from 'classnames';
 
 function Alert({ message, type, discard, index }) {
@@ -14,12 +13,10 @@ function Alert({ message, type, discard, index }) {
     }
   );
   const Icon = () => {
-    if (type === 'error')
-      return <FaTimesCircle className="text-red-400 text-2xl" />;
-    if (type === 'info')
-      return <BiErrorCircle className="text-green-400 text-2xl" />;
+    if (type === 'error') return <FaTimesCircle className="text-red-400 " />;
+    if (type === 'info') return <FaCheck className="text-green-400" />;
     if (type === 'warning')
-      return <IoWarningOutline className="text-yellow-400 text-2xl" />;
+      return <IoWarningOutline className="text-yellow-400" />;
   };
   useEffect(() => {
     setTimeout(() => {
