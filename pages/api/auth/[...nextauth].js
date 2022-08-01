@@ -8,8 +8,8 @@ export default NextAuth({
     CredentialsProvider({
       async authorize({ sim, pin }, req) {
         try {
-          if (isNaN(sim))
-            throw new Error('user sim is supposed to be a  number');
+          if (isNaN(sim) || isNaN(pin))
+            throw new Error('user sim and pin are supposed to be a  number');
           const user = await db.user.findUnique({
             where: {
               sim: parseInt(sim),
