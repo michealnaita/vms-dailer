@@ -22,7 +22,6 @@ export default NextAuth({
           });
           if (!user) throw new Error('User not found');
           const result = await bcrypt.compare(pin.toString(), user.pinHash);
-          console.log(user);
           if (user && result) {
             delete user.pinHash;
             return user;
@@ -30,8 +29,8 @@ export default NextAuth({
             return null;
           }
         } catch (err) {
-          return null;
           console.log(err);
+          return null;
         }
       },
     }),
