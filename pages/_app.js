@@ -8,15 +8,17 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     <>
       <Script
         strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.MEASUREMENT_ID}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
       ></Script>
-      <Script strategy="lazyOnload" id="">
+      <Script strategy="lazyOnload" id="google-analytics">
         {` 
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           
-          gtag('config', '${process.env.MEASUREMENT_ID}');
+          gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}',{
+            page_path: window.location.pathname
+          });
         `}
       </Script>
       <SessionProvider session={session}>
