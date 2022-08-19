@@ -92,7 +92,7 @@ export default function Home() {
       <section className="md:my-8 p-8">
         <div className="text-left flex flex-col gap-4 justify-center items-start">
           <h1 className="text-3xl text-center font-bold mb-10 w-max">
-            Let's try the Ivr!
+            Lets try the Ivr!
           </h1>
           <p className="max-w-[600px] text-gray-500 text-lg">
             In this video you will see how you can send messages using Mail 2
