@@ -29,7 +29,11 @@ export default function Home() {
           other schools through sending audio notes without needing to bring
           phones to school.
         </p>
-        <button className="btn-primary">Join Beta</button>
+        <Link href="https://chat.whatsapp.com/Fk1i49ipQowKt8g7gV0s9d">
+          <a>
+            <button className="btn-primary">Join Beta</button>
+          </a>
+        </Link>
       </div>
       <section className="my-8 p-8">
         <div className="text-left flex flex-col gap-4 justify-center items-start">
@@ -126,6 +130,28 @@ export default function Home() {
               allowFullScreen
             ></iframe>
           </div>
+        </div>
+      </section>
+      <section className="md:my-8 p-8">
+        <div className="text-left flex flex-col gap-4 justify-center items-end">
+          <h1 className="text-3xl text-left font-bold mb-10 md:w-[600px] ">
+            And the Beta program?
+          </h1>
+          <p className="max-w-[600px] text-gray-500 text-lg">
+            The beta program is an early preview of the software to a selected
+            individuals before its fully launched to public for testing and
+            feedback purposes
+            <br /> If you would like to be part of this beta program to test out
+            Mail 2 in school <bold className="font-bold">
+              this 3rd term
+            </bold>{' '}
+            please join our whatsApp group links below.
+          </p>
+          <Link href="https://chat.whatsapp.com/Fk1i49ipQowKt8g7gV0s9d">
+            <a>
+              <button className="btn-secondary">Join Beta</button>
+            </a>
+          </Link>
         </div>
       </section>
       <footer className="flex py-16 px-4 justify-between text-lg  text-gray-500">
