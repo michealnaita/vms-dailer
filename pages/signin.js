@@ -24,7 +24,7 @@ export default function SignIn() {
         }
       }
       if (res.url) {
-        router.push('/');
+        router.push('/phone');
       }
       setLoading(false);
     } catch (err) {
@@ -35,7 +35,7 @@ export default function SignIn() {
     alertsRef.current && alertsRef.current.alertUser({ message, type });
   }
   if (session && typeof window !== 'undefined') {
-    router.push('/');
+    router.push('/phone');
     return <></>;
   }
   return (
@@ -56,7 +56,7 @@ export default function SignIn() {
             <input
               name="sim"
               type="text"
-              placeholder="Enter sim"
+              placeholder="Enter Phone"
               className="text-gray-500 h-full w-full rounded-md bg-transparent ring-1 focus:ring-0 ring-neutral-500 focus:outline-cyan-500 focus:bg-white outline-none p-4"
             />
           </div>
@@ -64,19 +64,27 @@ export default function SignIn() {
             <input
               name="pin"
               type="password"
-              placeholder="Enter pin"
+              placeholder="Enter Pin"
               className="text-gray-500 h-full w-full rounded-md bg-transparent ring-1 focus:ring-0 ring-neutral-500  focus:outline-cyan-500 focus:bg-white outline-none p-4"
             />
           </div>
-          <div className=" text-sm italic text-neutral-400 font-">
+          <div className=" text-sm italic text-neutral-400">
             * if you cant remeber your sim and password,
             <br /> send a message in the whatsapp group
+            <br />
           </div>
+          <div className=" text-sm italic text-neutral-400">
+            dont have an account? join whatsapp group to
+            <br />
+            <span className="text-cyan-500 text-lg">
+              <a href="https://chat.whatsapp.com/Fk1i49ipQowKt8g7gV0s9d">
+                get access
+              </a>
+            </span>
+          </div>
+
           <div>
-            <button
-              className="bg-cyan-500 text-2xl px-8 py-4 rounded-xl disabled:animate-pulse   disabled:cursor-wait text-white"
-              disabled={loading}
-            >
+            <button className="btn-primary" disabled={loading}>
               {loading ? 'LOADING...' : 'Sign In'}
             </button>
           </div>
