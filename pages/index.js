@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
+import logo from '../public/logo.png';
 import {
   FaInstagram,
   FaFacebookF,
@@ -13,7 +14,7 @@ export default function Home() {
   return (
     <div className="text-white bg-black flex flex-col justify-center min-h-full max-w-full">
       <header className="flex px-4 items-center justify-between">
-        <Image src="/logo.png" alt="logo" width="150" height="150" />
+        <Image src={logo} alt="logo" width="150" height="150" />
         <div className="space-x-4">
           <Link href="/phone">
             <a className="hover:text-cyan-500 text-xl">Sign In</a>
