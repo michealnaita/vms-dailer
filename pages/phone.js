@@ -13,7 +13,7 @@ function StartPage({ startCall }) {
     <div className="h-full text-white w-full flex flex-col items-center justify-between py-24  bg-black">
       <div className="space-y-4">
         <div className=" top-4 left-4">
-          <Image src={logo} width="150" height="150" alt="" />
+          <Image src={logo} loading="eager" width="200" height="200" alt="" />
         </div>
         <p>Make call to get started</p>
         <div className=" max-w-[320px] text-base italic text-left text-neutral-400">
