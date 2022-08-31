@@ -10,7 +10,7 @@ export default function NotFound() {
   });
   return (
     <div className="w-full h-full flex justify-center items-center flex-col text-white bg-black font-bold text-2xl">
-      <Image src={logo} width="200" height="200" alt="" />
+      <Image src={logo} width="200" height="200" alt="" loading="eager" />
       <span>coming back soon...</span>
     </div>
   );
