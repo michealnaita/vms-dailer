@@ -69,7 +69,7 @@ export default function SignIn() {
             />
           </div>
           <div className=" text-sm italic text-neutral-400">
-            * if you cant remeber your sim and password,
+            * if you cant remeba your sim and password,
             <br /> send a message in the whatsapp group
             <br />
           </div>
